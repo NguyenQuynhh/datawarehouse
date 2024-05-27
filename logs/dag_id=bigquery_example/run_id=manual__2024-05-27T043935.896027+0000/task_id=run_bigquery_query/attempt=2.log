@@ -1,0 +1,49 @@
+[2024-05-27T04:44:57.798+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-27T04:44:57.818+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bigquery_example.run_bigquery_query manual__2024-05-27T04:39:35.896027+00:00 [queued]>
+[2024-05-27T04:44:57.831+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bigquery_example.run_bigquery_query manual__2024-05-27T04:39:35.896027+00:00 [queued]>
+[2024-05-27T04:44:57.832+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2024-05-27T04:44:57.852+0000] {taskinstance.py:2330} INFO - Executing <Task(BigQueryExecuteQueryOperator): run_bigquery_query> on 2024-05-27 04:39:35.896027+00:00
+[2024-05-27T04:44:57.862+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=141) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-27T04:44:57.865+0000] {standard_task_runner.py:63} INFO - Started process 143 to run task
+[2024-05-27T04:44:57.864+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'bigquery_example', 'run_bigquery_query', 'manual__2024-05-27T04:39:35.896027+00:00', '--job-id', '50', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmp9jtxcbt5']
+[2024-05-27T04:44:57.867+0000] {standard_task_runner.py:91} INFO - Job 50: Subtask run_bigquery_query
+[2024-05-27T04:44:57.932+0000] {task_command.py:426} INFO - Running <TaskInstance: bigquery_example.run_bigquery_query manual__2024-05-27T04:39:35.896027+00:00 [running]> on host fed9f026ca00
+[2024-05-27T04:44:58.033+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='nquynh' AIRFLOW_CTX_DAG_ID='bigquery_example' AIRFLOW_CTX_TASK_ID='run_bigquery_query' AIRFLOW_CTX_EXECUTION_DATE='2024-05-27T04:39:35.896027+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-27T04:39:35.896027+00:00'
+[2024-05-27T04:44:58.035+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-27T04:44:58.058+0000] {bigquery.py:1252} INFO - Executing: 
+        INSERT INTO `datawarehouse-423912.1.categories` 
+        VALUES (2, "quynh")
+            
+[2024-05-27T04:44:58.068+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-27T04:44:58.081+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 1253, in execute
+    self.hook = BigQueryHook(
+                ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 159, in __init__
+    super().__init__(**kwargs)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/common/hooks/base_google.py", line 252, in __init__
+    self.extras: dict = self.get_connection(self.gcp_conn_id).extra_dejson
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/hooks/base.py", line 83, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/connection.py", line 519, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `google_cloud_datawarehouse` isn't defined
+[2024-05-27T04:44:58.100+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=bigquery_example, task_id=run_bigquery_query, run_id=manual__2024-05-27T04:39:35.896027+00:00, execution_date=20240527T043935, start_date=20240527T044457, end_date=20240527T044458
+[2024-05-27T04:44:58.119+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 50 for task run_bigquery_query (The conn_id `google_cloud_datawarehouse` isn't defined; 143)
+[2024-05-27T04:44:58.160+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-05-27T04:44:58.178+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-05-27T04:44:58.181+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
