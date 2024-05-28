@@ -1,0 +1,66 @@
+[2024-05-27T16:52:18.404+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-27T16:52:18.436+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: oltp_to_olap_transform.load_gcs_to_bq manual__2024-05-27T16:51:51.390512+00:00 [queued]>
+[2024-05-27T16:52:18.457+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: oltp_to_olap_transform.load_gcs_to_bq manual__2024-05-27T16:51:51.390512+00:00 [queued]>
+[2024-05-27T16:52:18.458+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 0
+[2024-05-27T16:52:18.491+0000] {taskinstance.py:2330} INFO - Executing <Task(GCSToBigQueryOperator): load_gcs_to_bq> on 2024-05-27 16:51:51.390512+00:00
+[2024-05-27T16:52:18.527+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=76) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-27T16:52:18.532+0000] {standard_task_runner.py:63} INFO - Started process 78 to run task
+[2024-05-27T16:52:18.532+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'oltp_to_olap_transform', 'load_gcs_to_bq', 'manual__2024-05-27T16:51:51.390512+00:00', '--job-id', '96', '--raw', '--subdir', 'DAGS_FOLDER/datawarehouse.py', '--cfg-path', '/tmp/tmpi_42u7hw']
+[2024-05-27T16:52:18.539+0000] {standard_task_runner.py:91} INFO - Job 96: Subtask load_gcs_to_bq
+[2024-05-27T16:52:18.648+0000] {task_command.py:426} INFO - Running <TaskInstance: oltp_to_olap_transform.load_gcs_to_bq manual__2024-05-27T16:51:51.390512+00:00 [running]> on host 9b03efc10d80
+[2024-05-27T16:52:18.851+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ngquynh' AIRFLOW_CTX_DAG_ID='oltp_to_olap_transform' AIRFLOW_CTX_TASK_ID='load_gcs_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-05-27T16:51:51.390512+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-27T16:51:51.390512+00:00'
+[2024-05-27T16:52:18.854+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-27T16:52:18.912+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-05-27T16:52:18.917+0000] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-05-27T16:52:18.919+0000] {gcs_to_bigquery.py:380} INFO - Using existing BigQuery table for storing data...
+[2024-05-27T16:52:19.069+0000] {gcs_to_bigquery.py:384} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'datawarehouse-423912', 'datasetId': 'warehouse', 'tableId': 'categories'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://gs://warehouse8/gs://warehouse8/dataupdated/categories.csv'], 'writeDisposition': 'WRITE_EMPTY', 'ignoreUnknownValues': False, 'schema': {'fields': [{'name': 'categoryID', 'type': 'STRING', 'mode': 'NULLABLE'}, {'name': 'categoryName', 'type': 'STRING', 'mode': 'NULLABLE'}, {'name': 'description', 'type': 'STRING', 'mode': 'NULLABLE'}]}, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-05-27T16:52:19.071+0000] {bigquery.py:1660} INFO - Inserting job ***_oltp_to_olap_transform_load_gcs_to_bq_2024_05_27T16_51_51_390512_00_00_d5c4ab1364c198b35d47db7a7e05d5e4
+[2024-05-27T16:52:20.697+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-27T16:52:20.703+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 385, in execute
+    job: BigQueryJob | UnknownJob = self._submit_job(self.hook, job_id)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 307, in _submit_job
+    return hook.insert_job(
+           ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/common/hooks/base_google.py", line 486, in inner_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 1663, in insert_job
+    job_api_repr._begin()
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/base.py", line 740, in _begin
+    api_response = client._call_api(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/client.py", line 831, in _call_api
+    return call()
+           ^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 144, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.BadRequest: 400 POST https://bigquery.googleapis.com/bigquery/v2/projects/datawarehouse-423912/jobs?prettyPrint=false: Source URI must be a Google Cloud Storage location: gs://gs://warehouse8/gs://warehouse8/dataupdated/categories.csv
+[2024-05-27T16:52:20.812+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=oltp_to_olap_transform, task_id=load_gcs_to_bq, run_id=manual__2024-05-27T16:51:51.390512+00:00, execution_date=20240527T165151, start_date=20240527T165218, end_date=20240527T165220
+[2024-05-27T16:52:20.857+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 96 for task load_gcs_to_bq (400 POST https://bigquery.googleapis.com/bigquery/v2/projects/datawarehouse-423912/jobs?prettyPrint=false: Source URI must be a Google Cloud Storage location: gs://gs://warehouse8/gs://warehouse8/dataupdated/categories.csv; 78)
+[2024-05-27T16:52:20.888+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-05-27T16:52:20.940+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-05-27T16:52:20.951+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

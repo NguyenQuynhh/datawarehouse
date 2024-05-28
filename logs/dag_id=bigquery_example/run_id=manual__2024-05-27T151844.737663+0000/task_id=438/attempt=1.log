@@ -1,0 +1,51 @@
+[2024-05-27T15:19:21.431+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-27T15:19:21.502+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: bigquery_example.438 manual__2024-05-27T15:18:44.737663+00:00 [queued]>
+[2024-05-27T15:19:21.534+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: bigquery_example.438 manual__2024-05-27T15:18:44.737663+00:00 [queued]>
+[2024-05-27T15:19:21.536+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-05-27T15:19:21.576+0000] {taskinstance.py:2330} INFO - Executing <Task(BigQueryInsertJobOperator): 438> on 2024-05-27 15:18:44.737663+00:00
+[2024-05-27T15:19:21.630+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=99) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-27T15:19:21.678+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'bigquery_example', '438', 'manual__2024-05-27T15:18:44.737663+00:00', '--job-id', '78', '--raw', '--subdir', 'DAGS_FOLDER/bigquerry_example.py', '--cfg-path', '/tmp/tmpf2b3i0r3']
+[2024-05-27T15:19:21.684+0000] {standard_task_runner.py:63} INFO - Started process 103 to run task
+[2024-05-27T15:19:21.685+0000] {standard_task_runner.py:91} INFO - Job 78: Subtask 438
+[2024-05-27T15:19:21.862+0000] {task_command.py:426} INFO - Running <TaskInstance: bigquery_example.438 manual__2024-05-27T15:18:44.737663+00:00 [running]> on host 9b03efc10d80
+[2024-05-27T15:19:22.253+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='nquynh' AIRFLOW_CTX_DAG_ID='bigquery_example' AIRFLOW_CTX_TASK_ID='438' AIRFLOW_CTX_EXECUTION_DATE='2024-05-27T15:18:44.737663+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-27T15:18:44.737663+00:00'
+[2024-05-27T15:19:22.283+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-27T15:19:22.502+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-05-27T15:19:22.547+0000] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-05-27T15:19:23.215+0000] {bigquery.py:2832} INFO - Executing: {'query': {'query': ' \n                        INSERT INTO `datawarehouse-423912.1.categories`\n                        VALUES (3, "quynh")\n                    ', 'useLegacySql': False}}'
+[2024-05-27T15:19:23.235+0000] {bigquery.py:1660} INFO - Inserting job ***_bigquery_example_438_2024_05_27T15_18_44_737663_00_00_5c64cda417bee197f75f5feff2b7bf31
+[2024-05-27T15:19:25.096+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-27T15:19:25.097+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/operators/bigquery.py", line 2891, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/query.py", line 1626, in result
+    while not is_job_done():
+              ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/query.py", line 1577, in is_job_done
+    raise job_failed_exception
+google.api_core.exceptions.NotFound: 404 Not found: Dataset datawarehouse-423912:1 was not found in location US; reason: notFound, message: Not found: Dataset datawarehouse-423912:1 was not found in location US
+
+Location: US
+Job ID: airflow_bigquery_example_438_2024_05_27T15_18_44_737663_00_00_5c64cda417bee197f75f5feff2b7bf31
+
+[2024-05-27T15:19:25.200+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=bigquery_example, task_id=438, run_id=manual__2024-05-27T15:18:44.737663+00:00, execution_date=20240527T151844, start_date=20240527T151921, end_date=20240527T151925
+[2024-05-27T15:19:25.240+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 78 for task 438 (404 Not found: Dataset datawarehouse-423912:1 was not found in location US; reason: notFound, message: Not found: Dataset datawarehouse-423912:1 was not found in location US
+
+Location: US
+Job ID: airflow_bigquery_example_438_2024_05_27T15_18_44_737663_00_00_5c64cda417bee197f75f5feff2b7bf31
+; 103)
+[2024-05-27T15:19:25.297+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-05-27T15:19:25.333+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-05-27T15:19:25.337+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
