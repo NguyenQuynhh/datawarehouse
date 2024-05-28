@@ -208,3 +208,2930 @@ WHERE
 [2024-05-28T04:02:42.441+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:02:42.440+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2024-05-28T04:02:42.475+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:02:42.475+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
 [2024-05-28T04:02:42.529+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.368 seconds
+[2024-05-28T04:03:12.888+0000] {processor.py:161} INFO - Started process (PID=117) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:03:12.890+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:03:12.893+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:03:12.893+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:03:12.926+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:03:12.945+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:03:12.989+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:03:12.988+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:03:13.015+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:03:13.015+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:03:16.422+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 3.549 seconds
+[2024-05-28T04:03:46.996+0000] {processor.py:161} INFO - Started process (PID=125) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:03:47.009+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:03:47.054+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:03:47.052+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:03:47.286+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:03:47.936+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:03:48.326+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:03:48.320+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:03:48.454+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:03:48.453+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:03:48.541+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 1.609 seconds
+[2024-05-28T04:04:19.142+0000] {processor.py:161} INFO - Started process (PID=134) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:04:19.145+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:04:19.156+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:04:19.154+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:04:19.199+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:04:19.232+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:04:19.290+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:04:19.289+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:04:19.318+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:04:19.318+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:04:19.357+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.236 seconds
+[2024-05-28T04:04:49.888+0000] {processor.py:161} INFO - Started process (PID=142) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:04:49.891+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:04:49.899+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:04:49.897+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:04:49.955+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:04:49.983+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:04:50.046+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:04:50.045+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:04:50.080+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:04:50.080+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:04:50.150+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.282 seconds
+[2024-05-28T04:05:20.422+0000] {processor.py:161} INFO - Started process (PID=150) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:05:20.428+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:05:20.439+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:05:20.438+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:05:20.543+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:05:20.598+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:05:20.712+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:05:20.710+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:05:20.766+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:05:20.765+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:05:20.853+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.461 seconds
+[2024-05-28T04:05:51.330+0000] {processor.py:161} INFO - Started process (PID=159) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:05:51.332+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:05:51.337+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:05:51.336+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:05:51.373+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:05:51.398+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:05:51.459+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:05:51.458+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:05:51.489+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:05:51.488+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:05:51.529+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.208 seconds
+[2024-05-28T04:06:21.985+0000] {processor.py:161} INFO - Started process (PID=167) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:06:21.990+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:06:22.004+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:06:22.002+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:06:22.085+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:06:22.160+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:06:22.240+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:06:22.240+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:06:22.271+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:06:22.270+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:06:27.420+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 5.459 seconds
+[2024-05-28T04:06:58.116+0000] {processor.py:161} INFO - Started process (PID=181) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:06:58.118+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:06:58.122+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:06:58.121+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:06:58.163+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:06:58.189+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:06:58.323+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:06:58.321+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:06:58.405+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:06:58.404+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:06:58.534+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.429 seconds
+[2024-05-28T04:07:29.083+0000] {processor.py:161} INFO - Started process (PID=189) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:07:29.089+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:07:29.100+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:07:29.099+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:07:29.154+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:07:29.199+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:07:29.291+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:07:29.290+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:07:29.337+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:07:29.337+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:07:29.412+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.348 seconds
+[2024-05-28T04:07:59.854+0000] {processor.py:161} INFO - Started process (PID=197) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:07:59.857+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:07:59.868+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:07:59.867+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:07:59.931+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:07:59.970+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:08:00.063+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:08:00.063+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:08:00.115+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:08:00.115+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:08:00.160+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.349 seconds
+[2024-05-28T04:08:30.491+0000] {processor.py:161} INFO - Started process (PID=206) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:08:30.494+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:08:30.499+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:08:30.498+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:08:30.551+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:08:30.575+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:08:30.643+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:08:30.641+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:08:30.674+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:08:30.674+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:08:30.725+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.248 seconds
+[2024-05-28T04:09:01.045+0000] {processor.py:161} INFO - Started process (PID=214) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:09:01.048+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:09:01.055+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:09:01.052+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:09:01.114+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:09:01.165+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:09:01.295+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:09:01.292+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:09:01.361+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:09:01.361+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:09:08.599+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 7.581 seconds
+[2024-05-28T04:09:38.803+0000] {processor.py:161} INFO - Started process (PID=222) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:09:38.807+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:09:38.812+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:09:38.811+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:09:38.870+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:09:38.895+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:09:38.954+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:09:38.953+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:09:38.979+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:09:38.979+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:09:39.020+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.235 seconds
+[2024-05-28T04:10:09.769+0000] {processor.py:161} INFO - Started process (PID=230) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:10:09.772+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:10:09.779+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:10:09.778+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:10:09.832+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:10:09.859+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:10:09.923+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:10:09.922+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:10:09.991+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:10:09.990+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:10:10.114+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.384 seconds
+[2024-05-28T04:10:41.256+0000] {processor.py:161} INFO - Started process (PID=238) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:10:41.261+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:10:41.333+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:10:41.332+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:10:41.378+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:10:41.401+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:10:41.452+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:10:41.452+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:10:41.474+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:10:41.474+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:10:41.506+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.270 seconds
+[2024-05-28T04:11:12.194+0000] {processor.py:161} INFO - Started process (PID=246) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:11:12.196+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:11:12.245+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:11:12.241+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:11:12.388+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:11:12.423+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:11:12.491+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:11:12.490+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:11:12.519+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:11:12.519+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:11:12.562+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.397 seconds
+[2024-05-28T04:11:43.324+0000] {processor.py:161} INFO - Started process (PID=254) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:11:43.334+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:11:43.357+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:11:43.353+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:11:43.432+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:11:43.503+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:11:43.752+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:11:43.751+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:11:43.902+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:11:43.901+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:11:43.993+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.732 seconds
+[2024-05-28T04:12:14.965+0000] {processor.py:161} INFO - Started process (PID=262) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:12:14.976+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:12:15.007+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:12:15.005+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:12:15.144+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:12:15.339+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:12:15.506+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:12:15.505+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:12:15.582+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:12:15.582+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:12:24.836+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 9.955 seconds
+[2024-05-28T04:12:55.605+0000] {processor.py:161} INFO - Started process (PID=271) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:12:55.611+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:12:55.628+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:12:55.627+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:12:55.703+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:12:55.742+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:12:55.826+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:12:55.825+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:12:55.870+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:12:55.870+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:12:55.929+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.349 seconds
+[2024-05-28T04:13:13.552+0000] {processor.py:161} INFO - Started process (PID=278) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:13.555+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:13:13.562+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:13:13.560+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:13.663+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:13:13.707+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:13:13.667+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:13:13.713+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:13.855+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.322 seconds
+[2024-05-28T04:13:44.055+0000] {processor.py:161} INFO - Started process (PID=286) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:44.058+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:13:44.061+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:13:44.061+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:44.104+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:13:44.116+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:13:44.107+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:13:44.120+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:44.166+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.129 seconds
+[2024-05-28T04:13:56.370+0000] {processor.py:161} INFO - Started process (PID=287) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:56.374+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:13:56.384+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:13:56.383+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:56.468+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:13:56.491+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:13:56.509+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:13:56.495+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:13:56.515+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:56.611+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.264 seconds
+[2024-05-28T04:13:57.748+0000] {processor.py:161} INFO - Started process (PID=289) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:57.752+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:13:57.760+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:13:57.759+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:57.824+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:13:57.831+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:13:57.843+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:13:57.834+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:13:57.846+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:13:57.887+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.166 seconds
+[2024-05-28T04:14:28.447+0000] {processor.py:161} INFO - Started process (PID=297) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:14:28.450+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:14:28.453+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:14:28.452+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:14:28.519+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:14:28.534+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:14:28.554+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:14:28.540+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:14:28.561+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:14:28.662+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.236 seconds
+[2024-05-28T04:14:59.240+0000] {processor.py:161} INFO - Started process (PID=305) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:14:59.243+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:14:59.245+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:14:59.244+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:14:59.288+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:14:59.294+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:14:59.304+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:14:59.296+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:14:59.307+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:14:59.342+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.114 seconds
+[2024-05-28T04:15:29.824+0000] {processor.py:161} INFO - Started process (PID=313) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:15:29.826+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:15:29.828+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:15:29.827+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:15:29.866+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:15:29.873+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:15:29.888+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:15:29.876+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:15:29.892+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:15:29.943+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.131 seconds
+[2024-05-28T04:16:00.505+0000] {processor.py:161} INFO - Started process (PID=321) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:16:00.508+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:16:00.511+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:16:00.511+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:16:00.566+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:16:00.577+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:16:00.593+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:16:00.581+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:16:00.599+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:16:00.648+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.167 seconds
+[2024-05-28T04:16:31.323+0000] {processor.py:161} INFO - Started process (PID=330) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:16:31.328+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:16:31.333+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:16:31.331+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:16:31.439+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:16:31.457+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:16:31.489+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:16:31.467+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:16:31.499+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:16:31.594+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.302 seconds
+[2024-05-28T04:17:04.054+0000] {processor.py:161} INFO - Started process (PID=343) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:17:04.063+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:17:04.069+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:17:04.067+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:17:04.182+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:17:04.191+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:17:04.210+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:17:04.196+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:17:04.214+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:17:04.391+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.425 seconds
+[2024-05-28T04:17:34.927+0000] {processor.py:161} INFO - Started process (PID=351) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:17:34.931+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:17:34.934+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:17:34.933+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:17:35.002+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:17:35.013+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:17:35.034+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:17:35.018+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:17:35.040+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:17:35.110+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.203 seconds
+[2024-05-28T04:18:05.253+0000] {processor.py:161} INFO - Started process (PID=359) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:18:05.256+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:18:05.259+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:18:05.258+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:18:05.326+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:18:05.337+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:18:05.358+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:18:05.342+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:18:05.365+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:18:05.419+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.183 seconds
+[2024-05-28T04:18:36.190+0000] {processor.py:161} INFO - Started process (PID=367) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:18:36.198+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:18:36.206+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:18:36.203+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:18:36.324+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:18:36.344+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:18:36.386+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:18:36.355+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:18:36.396+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:18:36.488+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.346 seconds
+[2024-05-28T04:19:07.053+0000] {processor.py:161} INFO - Started process (PID=375) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:19:07.055+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:19:07.058+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:19:07.057+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:19:07.117+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:19:07.128+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:19:07.143+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:19:07.131+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:19:07.148+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:19:07.192+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.153 seconds
+[2024-05-28T04:19:37.787+0000] {processor.py:161} INFO - Started process (PID=383) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:19:37.789+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:19:37.792+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:19:37.791+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:19:37.856+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:19:37.866+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:19:37.883+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:19:37.870+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:19:37.888+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:19:37.933+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.160 seconds
+[2024-05-28T04:20:08.274+0000] {processor.py:161} INFO - Started process (PID=391) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:20:08.280+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:20:08.303+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:20:08.302+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:20:08.529+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:20:08.545+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:20:08.583+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:20:08.550+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:20:08.591+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:20:08.653+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.406 seconds
+[2024-05-28T04:20:39.275+0000] {processor.py:161} INFO - Started process (PID=399) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:20:39.276+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:20:39.278+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:20:39.278+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:20:39.312+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:20:39.319+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:20:39.330+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:20:39.322+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:20:39.333+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:20:39.372+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.107 seconds
+[2024-05-28T04:21:10.018+0000] {processor.py:161} INFO - Started process (PID=407) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:21:10.022+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:21:10.027+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:21:10.026+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:21:10.148+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:21:10.169+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:21:10.206+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:21:10.177+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:21:10.221+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:21:10.263+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.274 seconds
+[2024-05-28T04:21:40.703+0000] {processor.py:161} INFO - Started process (PID=415) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:21:40.706+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:21:40.710+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:21:40.709+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:21:40.781+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:21:40.791+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:21:40.807+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:21:40.795+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:21:40.814+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:21:40.923+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.255 seconds
+[2024-05-28T04:22:11.373+0000] {processor.py:161} INFO - Started process (PID=423) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:22:11.376+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:22:11.381+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:22:11.380+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:22:11.465+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:22:11.480+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:22:11.500+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:22:11.485+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:22:11.509+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:22:11.570+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.213 seconds
+[2024-05-28T04:22:41.763+0000] {processor.py:161} INFO - Started process (PID=431) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:22:41.768+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:22:41.772+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:22:41.770+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:22:41.856+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:22:41.865+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:22:41.883+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:22:41.870+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:22:41.888+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:22:41.941+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.209 seconds
+[2024-05-28T04:23:12.256+0000] {processor.py:161} INFO - Started process (PID=439) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:23:12.259+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:23:12.262+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:23:12.261+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:23:12.338+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:23:12.351+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:23:12.374+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:23:12.357+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:23:12.379+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:23:12.421+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.182 seconds
+[2024-05-28T04:23:43.124+0000] {processor.py:161} INFO - Started process (PID=447) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:23:43.251+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:23:43.353+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:23:43.352+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:23:43.495+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:23:43.504+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:23:43.527+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:23:43.507+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:23:43.539+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:23:43.599+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.543 seconds
+[2024-05-28T04:24:14.380+0000] {processor.py:161} INFO - Started process (PID=455) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:24:14.382+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:24:14.385+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:24:14.384+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:24:14.441+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:24:14.451+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:24:14.468+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:24:14.455+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:24:14.473+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:24:14.518+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.152 seconds
+[2024-05-28T04:24:45.014+0000] {processor.py:161} INFO - Started process (PID=463) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:24:45.016+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:24:45.019+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:24:45.018+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:24:45.062+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:24:45.068+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:24:45.076+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:24:45.070+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:24:45.079+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:24:45.110+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.109 seconds
+[2024-05-28T04:25:15.694+0000] {processor.py:161} INFO - Started process (PID=471) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:25:15.698+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:25:15.703+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:25:15.702+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:25:15.803+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:25:15.824+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:25:15.852+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:25:15.831+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:25:15.862+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:25:15.938+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.269 seconds
+[2024-05-28T04:25:46.662+0000] {processor.py:161} INFO - Started process (PID=479) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:25:46.667+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:25:46.673+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:25:46.671+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:25:46.776+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:25:46.795+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:25:46.826+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:25:46.803+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:25:46.839+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:25:46.929+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.298 seconds
+[2024-05-28T04:26:17.633+0000] {processor.py:161} INFO - Started process (PID=487) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:26:17.636+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:26:17.639+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:26:17.638+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:26:17.731+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:26:17.749+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:26:17.781+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:26:17.756+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:26:17.791+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:26:17.882+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.261 seconds
+[2024-05-28T04:26:48.209+0000] {processor.py:161} INFO - Started process (PID=496) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:26:48.211+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:26:48.213+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:26:48.213+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:26:48.251+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:26:48.258+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:26:48.270+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:26:48.260+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:26:48.273+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:26:48.317+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.122 seconds
+[2024-05-28T04:27:18.784+0000] {processor.py:161} INFO - Started process (PID=504) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:27:18.789+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:27:18.793+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:27:18.792+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:27:18.888+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:27:18.899+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:27:18.917+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:27:18.903+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:27:18.922+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:27:18.969+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.216 seconds
+[2024-05-28T04:27:49.746+0000] {processor.py:161} INFO - Started process (PID=512) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:27:49.749+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:27:49.752+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:27:49.751+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:27:49.809+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:27:49.822+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:27:49.842+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:27:49.827+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:27:49.847+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:27:49.894+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.169 seconds
+[2024-05-28T04:28:20.526+0000] {processor.py:161} INFO - Started process (PID=520) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:28:20.528+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:28:20.531+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:28:20.530+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:28:20.595+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:28:20.605+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:28:20.623+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:28:20.609+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:28:20.628+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:28:20.675+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.171 seconds
+[2024-05-28T04:28:51.311+0000] {processor.py:161} INFO - Started process (PID=528) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:28:51.317+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:28:51.320+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:28:51.319+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:28:51.379+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:28:51.388+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:28:51.405+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:28:51.393+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:28:51.412+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:28:51.489+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.201 seconds
+[2024-05-28T04:29:22.095+0000] {processor.py:161} INFO - Started process (PID=536) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:29:22.098+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:29:22.101+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:29:22.100+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:29:22.167+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:29:22.179+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:29:22.198+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:29:22.184+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:29:22.202+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:29:22.246+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.170 seconds
+[2024-05-28T04:29:52.915+0000] {processor.py:161} INFO - Started process (PID=544) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:29:52.917+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:29:52.920+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:29:52.919+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:29:52.965+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:29:52.973+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:29:52.986+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:29:52.976+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:29:52.990+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:29:53.025+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.121 seconds
+[2024-05-28T04:30:23.244+0000] {processor.py:161} INFO - Started process (PID=552) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:30:23.246+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:30:23.249+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:30:23.248+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:30:23.293+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:30:23.300+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:30:23.313+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:30:23.303+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:30:23.318+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:30:23.359+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.130 seconds
+[2024-05-28T04:30:54.028+0000] {processor.py:161} INFO - Started process (PID=561) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:30:54.032+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:30:54.039+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:30:54.037+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:30:54.172+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:30:54.199+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:30:54.217+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:30:54.205+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:30:54.222+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:30:54.295+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.299 seconds
+[2024-05-28T04:31:25.001+0000] {processor.py:161} INFO - Started process (PID=569) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:31:25.003+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:31:25.006+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:31:25.006+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:31:25.054+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:31:25.063+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:31:25.088+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:31:25.068+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:31:25.096+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:31:25.152+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.163 seconds
+[2024-05-28T04:31:55.776+0000] {processor.py:161} INFO - Started process (PID=577) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:31:55.779+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:31:55.782+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:31:55.781+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:31:55.841+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:31:55.846+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:31:55.858+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:31:55.850+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:31:55.862+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:31:55.891+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.137 seconds
+[2024-05-28T04:32:26.528+0000] {processor.py:161} INFO - Started process (PID=585) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:32:26.530+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:32:26.533+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:32:26.533+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:32:26.623+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:32:26.635+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:32:26.656+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:32:26.640+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 104, in <module>
+    t1 >> t2
+          ^^
+NameError: name 't2' is not defined
+[2024-05-28T04:32:26.666+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:32:26.724+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.217 seconds
+[2024-05-28T04:32:46.444+0000] {processor.py:161} INFO - Started process (PID=593) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:32:46.449+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:32:46.453+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:32:46.452+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:32:46.627+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:32:46.648+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:32:46.715+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:32:46.666+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 124, in <module>
+    t0=load_orders_gcs_to_bq #Set task dependencies
+       ^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'load_orders_gcs_to_bq' is not defined
+[2024-05-28T04:32:46.744+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:32:46.816+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.400 seconds
+[2024-05-28T04:33:17.589+0000] {processor.py:161} INFO - Started process (PID=601) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:33:17.592+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:33:17.594+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:33:17.593+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:33:17.632+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:33:17.640+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:33:17.666+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:33:17.645+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 124, in <module>
+    t0=load_orders_gcs_to_bq #Set task dependencies
+       ^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'load_orders_gcs_to_bq' is not defined
+[2024-05-28T04:33:17.679+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:33:17.722+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.146 seconds
+[2024-05-28T04:33:48.280+0000] {processor.py:161} INFO - Started process (PID=609) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:33:48.282+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:33:48.285+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:33:48.284+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:33:48.332+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:33:48.340+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:33:48.367+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:33:48.346+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 124, in <module>
+    t0=load_orders_gcs_to_bq #Set task dependencies
+       ^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'load_orders_gcs_to_bq' is not defined
+[2024-05-28T04:33:48.385+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:33:48.420+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.155 seconds
+[2024-05-28T04:33:55.571+0000] {processor.py:161} INFO - Started process (PID=610) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:33:55.573+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:33:55.576+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:33:55.575+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:33:55.673+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:33:55.680+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:33:55.695+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:33:56.207+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:33:56.206+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:33:56.233+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:33:56.232+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:33:56.317+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.768 seconds
+[2024-05-28T04:36:05.350+0000] {processor.py:161} INFO - Started process (PID=37) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:36:05.356+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:36:05.365+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:36:05.363+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:36:05.429+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:36:05.440+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:36:05.489+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:36:05.910+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:36:05.909+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:36:05.966+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:36:05.966+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:36:06.547+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 1.224 seconds
+[2024-05-28T04:36:38.187+0000] {processor.py:161} INFO - Started process (PID=44) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:36:38.196+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:36:38.207+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:36:38.206+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:36:38.448+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:36:38.471+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:36:38.517+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:36:38.695+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:36:38.689+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:36:38.800+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:36:38.799+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:36:38.953+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.829 seconds
+[2024-05-28T04:37:10.180+0000] {processor.py:161} INFO - Started process (PID=53) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:37:10.185+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:37:10.220+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:37:10.216+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:37:10.334+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:37:10.346+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:37:10.422+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:37:10.619+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:37:10.617+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:37:10.674+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:37:10.674+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:37:10.730+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.631 seconds
+[2024-05-28T04:37:41.512+0000] {processor.py:161} INFO - Started process (PID=61) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:37:41.519+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:37:41.543+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:37:41.540+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:37:41.737+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:37:41.745+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:37:41.780+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:37:41.971+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:37:41.967+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:37:42.054+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:37:42.053+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:37:42.134+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.707 seconds
+[2024-05-28T04:38:12.895+0000] {processor.py:161} INFO - Started process (PID=69) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:38:12.900+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:38:12.929+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:38:12.925+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:38:13.017+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:38:13.025+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:38:13.107+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:38:13.266+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:38:13.265+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:38:13.352+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:38:13.352+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:38:13.416+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.597 seconds
+[2024-05-28T04:38:44.521+0000] {processor.py:161} INFO - Started process (PID=77) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:38:44.539+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:38:44.600+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:38:44.598+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:38:44.936+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:38:44.945+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:38:45.138+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:38:45.365+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:38:45.363+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:38:45.404+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:38:45.403+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:38:45.453+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 1.241 seconds
+[2024-05-28T04:39:16.025+0000] {processor.py:161} INFO - Started process (PID=85) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:39:16.028+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:39:16.041+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:39:16.040+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:39:16.110+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:39:16.116+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:39:16.173+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:39:16.230+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:39:16.229+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:39:16.271+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:39:16.271+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:39:23.493+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 7.495 seconds
+[2024-05-28T04:39:54.169+0000] {processor.py:161} INFO - Started process (PID=99) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:39:54.173+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:39:54.179+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:39:54.178+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:39:54.221+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:39:54.229+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:39:54.243+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:39:54.296+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:39:54.295+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:39:54.323+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:39:54.323+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:39:54.361+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.210 seconds
+[2024-05-28T04:40:24.774+0000] {processor.py:161} INFO - Started process (PID=107) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:40:24.776+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:40:24.781+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:40:24.780+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:40:24.820+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:40:24.830+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:40:24.855+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:40:24.937+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:40:24.936+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:40:24.964+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:40:24.963+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:40:25.014+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.257 seconds
+[2024-05-28T04:40:55.999+0000] {processor.py:161} INFO - Started process (PID=115) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:40:56.004+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:40:56.015+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:40:56.013+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:40:56.118+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:40:56.135+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:40:56.171+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:40:56.292+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:40:56.290+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:40:56.362+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:40:56.361+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:40:56.460+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.500 seconds
+[2024-05-28T04:41:27.032+0000] {processor.py:161} INFO - Started process (PID=123) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:41:27.034+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:41:27.038+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:41:27.037+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:41:27.075+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:41:27.082+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:41:27.095+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:41:27.143+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:41:27.142+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:41:27.167+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:41:27.167+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:41:27.210+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.190 seconds
+[2024-05-28T04:41:57.455+0000] {processor.py:161} INFO - Started process (PID=131) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:41:57.458+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:41:57.464+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:41:57.463+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:41:57.522+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:41:57.532+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:41:57.556+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:41:57.626+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:41:57.625+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:41:57.664+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:41:57.663+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:41:57.719+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.279 seconds
+[2024-05-28T04:42:28.184+0000] {processor.py:161} INFO - Started process (PID=139) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:42:28.187+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:42:28.192+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:42:28.191+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:42:28.239+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:42:28.249+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:42:28.268+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:42:28.339+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:42:28.338+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:42:28.370+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:42:28.370+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:42:28.418+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.253 seconds
+[2024-05-28T04:42:58.620+0000] {processor.py:161} INFO - Started process (PID=147) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:42:58.632+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:42:58.637+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:42:58.636+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:42:58.676+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:42:58.681+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:42:58.699+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:42:58.737+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:42:58.736+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:42:58.757+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:42:58.757+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:42:58.789+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.197 seconds
+[2024-05-28T04:43:29.277+0000] {processor.py:161} INFO - Started process (PID=155) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:43:29.279+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:43:29.285+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:43:29.284+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:43:29.325+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:43:29.331+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:43:29.344+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:43:29.377+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:43:29.376+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:43:29.394+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:43:29.394+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:43:29.427+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.176 seconds
+[2024-05-28T04:43:59.961+0000] {processor.py:161} INFO - Started process (PID=163) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:43:59.963+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:43:59.977+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:43:59.975+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:44:00.040+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:44:00.048+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:44:00.080+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:44:00.163+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:44:00.162+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:44:00.201+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:44:00.200+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:44:00.239+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.302 seconds
+[2024-05-28T04:44:30.894+0000] {processor.py:161} INFO - Started process (PID=171) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:44:30.903+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:44:30.917+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:44:30.915+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:44:31.030+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:44:31.051+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:44:31.089+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:44:31.181+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:44:31.180+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:44:31.231+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:44:31.231+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:44:31.301+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.451 seconds
+[2024-05-28T04:45:01.626+0000] {processor.py:161} INFO - Started process (PID=179) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:45:01.633+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:45:01.650+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:45:01.648+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:45:01.731+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:45:01.739+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:45:01.761+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:45:01.816+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:45:01.815+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:45:04.515+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:45:04.515+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:45:04.603+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 3.026 seconds
+[2024-05-28T04:45:35.329+0000] {processor.py:161} INFO - Started process (PID=186) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:45:35.334+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:45:35.347+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:45:35.345+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:45:35.459+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:45:35.481+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:45:35.518+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:45:35.636+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:45:35.633+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:45:35.700+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:45:35.699+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:45:35.807+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.528 seconds
+[2024-05-28T04:46:06.279+0000] {processor.py:161} INFO - Started process (PID=194) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:46:06.281+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:46:06.286+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:46:06.285+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:46:06.332+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:46:06.341+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:46:06.364+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:46:06.427+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:46:06.425+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:46:06.464+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:46:06.463+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:46:06.518+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.266 seconds
+[2024-05-28T04:46:37.090+0000] {processor.py:161} INFO - Started process (PID=202) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:46:37.092+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:46:37.099+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:46:37.098+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:46:37.148+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:46:37.158+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:46:37.185+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:46:37.276+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:46:37.275+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:46:37.328+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:46:37.327+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:46:37.399+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.335 seconds
+[2024-05-28T04:47:07.676+0000] {processor.py:161} INFO - Started process (PID=210) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:47:07.679+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:47:07.685+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:47:07.684+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:47:07.734+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:47:07.746+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:47:07.775+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:47:07.856+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:47:07.855+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:47:07.911+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:47:07.911+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:47:08.014+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.357 seconds
+[2024-05-28T04:47:38.833+0000] {processor.py:161} INFO - Started process (PID=218) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:47:38.840+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:47:38.847+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:47:38.846+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:47:38.907+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:47:38.914+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:47:38.932+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:47:38.981+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:47:38.980+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:47:39.015+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:47:39.014+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:47:44.641+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 5.848 seconds
+[2024-05-28T04:48:15.304+0000] {processor.py:161} INFO - Started process (PID=226) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:48:15.316+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:48:15.342+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:48:15.339+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:48:15.457+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:48:15.478+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:48:15.529+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:48:15.665+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:48:15.660+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:48:15.734+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:48:15.733+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:48:15.844+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.580 seconds
+[2024-05-28T04:48:46.039+0000] {processor.py:161} INFO - Started process (PID=234) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:48:46.041+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:48:46.047+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:48:46.046+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:48:46.093+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:48:46.101+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:48:46.122+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:48:46.176+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:48:46.176+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:48:46.200+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:48:46.200+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:48:46.243+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.219 seconds
+[2024-05-28T04:49:16.707+0000] {processor.py:161} INFO - Started process (PID=242) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:49:16.712+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:49:16.723+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:49:16.722+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:49:16.811+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:49:16.831+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:49:16.864+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:49:16.984+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:49:16.982+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:49:17.061+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:49:17.060+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:49:17.162+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.490 seconds
+[2024-05-28T04:49:47.555+0000] {processor.py:161} INFO - Started process (PID=251) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:49:47.557+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:49:47.561+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:49:47.561+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:49:47.655+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:49:47.678+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:49:47.716+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:49:47.862+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:49:47.859+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:49:47.946+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:49:47.945+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:49:47.992+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.448 seconds
+[2024-05-28T04:50:18.149+0000] {processor.py:161} INFO - Started process (PID=259) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:50:18.155+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:50:18.173+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:50:18.169+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:50:18.278+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:50:18.299+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:50:18.324+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:50:18.396+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:50:18.394+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:50:18.440+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:50:18.440+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:50:18.495+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.378 seconds
+[2024-05-28T04:50:49.206+0000] {processor.py:161} INFO - Started process (PID=267) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:50:49.209+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:50:49.216+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:50:49.215+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:50:49.289+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:50:49.310+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:50:49.344+0000] {processor.py:840} INFO - DAG(s) 'oltp_to_olap_oders_transform' retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:50:49.462+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:50:49.460+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T04:50:49.518+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:50:49.518+0000] {dag.py:3954} INFO - Setting next_dagrun for oltp_to_olap_oders_transform to None, run_after=None
+[2024-05-28T04:50:51.227+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 2.051 seconds
+[2024-05-28T04:50:56.690+0000] {processor.py:161} INFO - Started process (PID=269) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:50:56.692+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:50:56.696+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:50:56.696+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:50:56.773+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:50:56.784+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:50:56.805+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:50:56.790+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 77, in <module>
+    DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/orderslte.py", line 70, in read_sql_file
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql'
+[2024-05-28T04:50:56.809+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:50:56.864+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.186 seconds
+[2024-05-28T04:51:27.657+0000] {processor.py:161} INFO - Started process (PID=278) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:51:27.660+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:51:27.665+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:51:27.664+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:51:27.717+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:51:27.729+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:51:27.751+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:51:27.736+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 77, in <module>
+    DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/orderslte.py", line 70, in read_sql_file
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql'
+[2024-05-28T04:51:27.755+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:51:27.815+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.185 seconds
+[2024-05-28T04:51:58.487+0000] {processor.py:161} INFO - Started process (PID=286) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:51:58.493+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:51:58.506+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:51:58.503+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:51:58.600+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:51:58.618+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:51:58.650+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:51:58.626+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 77, in <module>
+    DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/orderslte.py", line 70, in read_sql_file
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql'
+[2024-05-28T04:51:58.659+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:51:58.746+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.309 seconds
+[2024-05-28T04:52:29.510+0000] {processor.py:161} INFO - Started process (PID=294) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:52:29.515+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:52:29.520+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:52:29.519+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:52:29.676+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:52:29.687+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:52:29.706+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:52:29.693+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 77, in <module>
+    DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/orderslte.py", line 70, in read_sql_file
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql'
+[2024-05-28T04:52:29.711+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:52:29.755+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.270 seconds
+[2024-05-28T04:52:44.911+0000] {processor.py:161} INFO - Started process (PID=301) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:52:44.912+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:52:44.914+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:52:44.914+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:52:44.977+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:52:44.982+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:52:44.995+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:52:44.986+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 77, in <module>
+    DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/orderslte.py", line 70, in read_sql_file
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql'
+[2024-05-28T04:52:44.999+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:52:45.042+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.142 seconds
+[2024-05-28T04:53:15.761+0000] {processor.py:161} INFO - Started process (PID=309) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:53:15.766+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:53:15.772+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:53:15.770+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:53:15.886+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:53:15.910+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:53:15.948+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:53:15.921+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 77, in <module>
+    DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/orderslte.py", line 70, in read_sql_file
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql'
+[2024-05-28T04:53:15.952+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:53:16.007+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.278 seconds
+[2024-05-28T04:53:46.742+0000] {processor.py:161} INFO - Started process (PID=317) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:53:46.744+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:53:46.746+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:53:46.746+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:53:46.789+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:53:46.797+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:53:46.813+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:53:46.802+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 77, in <module>
+    DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/orderslte.py", line 70, in read_sql_file
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql'
+[2024-05-28T04:53:46.818+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:53:46.868+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.138 seconds
+[2024-05-28T04:54:17.490+0000] {processor.py:161} INFO - Started process (PID=325) to work on /opt/airflow/dags/orderslte.py
+[2024-05-28T04:54:17.496+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/orderslte.py for tasks to queue
+[2024-05-28T04:54:17.502+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:54:17.499+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:54:17.571+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T04:54:17.581+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T04:54:17.602+0000] {logging_mixin.py:188} INFO - [2024-05-28T04:54:17.587+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/orderslte.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/orderslte.py", line 77, in <module>
+    DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/orderslte.py", line 70, in read_sql_file
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/dags/SQL_Queries/DimSalesPerson.sql'
+[2024-05-28T04:54:17.609+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/orderslte.py
+[2024-05-28T04:54:17.663+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/orderslte.py took 0.204 seconds

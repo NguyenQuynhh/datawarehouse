@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.orders` AS
+CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.Dim_date` AS
 SELECT
   SAFE_CAST(order_date AS DATE) AS order_date,
   EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
