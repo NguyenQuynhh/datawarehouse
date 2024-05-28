@@ -22,7 +22,7 @@ dag = DAG(
     'ETL_pipeline',
     default_args=default_args,
     description='ETL_pipeline',
-    # template_searchpath='/opt/airflow/dags/SQL_Queries', ### không hiểu
+    # template_searchpath='/opt/airflow/dags/SQL_Queries', 
     schedule_interval=None,
     start_date=datetime(2024, 5, 28),
 )
@@ -516,7 +516,7 @@ TaskDelay=BashOperator(
     dag=dag,
     bash_command="sleep 5s")
 
-# # t0=load_orders_gcs_to_bq #Set task dependencies
+
 t1 >> t2 >> t3 >> t4 >> t5 >> t6 >> t7 >> t8 >> t9 >> t10 >> t11 >> TaskDelay >> [t12,t13,t14,t15] >> t16 >> t17 >> t18 >> t19
 
  
