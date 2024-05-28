@@ -1,0 +1,24 @@
+[2024-05-28T12:08:25.255+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-28T12:08:25.278+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: loading_to_bigquerry.load_shippers_to_bq manual__2024-05-28T12:06:50.557096+00:00 [queued]>
+[2024-05-28T12:08:25.291+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: loading_to_bigquerry.load_shippers_to_bq manual__2024-05-28T12:06:50.557096+00:00 [queued]>
+[2024-05-28T12:08:25.292+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 0
+[2024-05-28T12:08:25.311+0000] {taskinstance.py:2330} INFO - Executing <Task(GCSToBigQueryOperator): load_shippers_to_bq> on 2024-05-28 12:06:50.557096+00:00
+[2024-05-28T12:08:25.320+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1749) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-28T12:08:25.323+0000] {standard_task_runner.py:63} INFO - Started process 1751 to run task
+[2024-05-28T12:08:25.323+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'loading_to_bigquerry', 'load_shippers_to_bq', 'manual__2024-05-28T12:06:50.557096+00:00', '--job-id', '336', '--raw', '--subdir', 'DAGS_FOLDER/load_to_bigquerry.py', '--cfg-path', '/tmp/tmpt5o6xb01']
+[2024-05-28T12:08:25.326+0000] {standard_task_runner.py:91} INFO - Job 336: Subtask load_shippers_to_bq
+[2024-05-28T12:08:25.379+0000] {task_command.py:426} INFO - Running <TaskInstance: loading_to_bigquerry.load_shippers_to_bq manual__2024-05-28T12:06:50.557096+00:00 [running]> on host 9b03efc10d80
+[2024-05-28T12:08:25.498+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ngquynh' AIRFLOW_CTX_DAG_ID='loading_to_bigquerry' AIRFLOW_CTX_TASK_ID='load_shippers_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-05-28T12:06:50.557096+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-28T12:06:50.557096+00:00'
+[2024-05-28T12:08:25.500+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-28T12:08:25.528+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-05-28T12:08:25.531+0000] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-05-28T12:08:25.533+0000] {gcs_to_bigquery.py:380} INFO - Using existing BigQuery table for storing data...
+[2024-05-28T12:08:25.590+0000] {gcs_to_bigquery.py:384} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'datawarehouse-423912', 'datasetId': 'warehouse', 'tableId': 'shippers'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://warehouse8/dataupdated/shippers.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'schema': {'fields': [{'name': 'shipperID', 'type': 'INTEGER', 'mode': 'NULLABLE'}, {'name': 'companyName', 'type': 'STRING', 'mode': 'NULLABLE'}, {'name': 'phone', 'type': 'STRING', 'mode': 'NULLABLE'}]}, 'maxBadRecords': 10, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-05-28T12:08:25.591+0000] {bigquery.py:1660} INFO - Inserting job ***_loading_to_bigquerry_load_shippers_to_bq_2024_05_28T12_06_50_557096_00_00_88ae3a22eb670bd36e53b35df4cef5f8
+[2024-05-28T12:08:29.673+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-28T12:08:29.682+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=loading_to_bigquerry, task_id=load_shippers_to_bq, run_id=manual__2024-05-28T12:06:50.557096+00:00, execution_date=20240528T120650, start_date=20240528T120825, end_date=20240528T120829
+[2024-05-28T12:08:29.714+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-05-28T12:08:29.738+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-05-28T12:08:29.740+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
