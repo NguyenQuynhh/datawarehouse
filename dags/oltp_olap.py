@@ -76,6 +76,7 @@ DimDateQuery = read_sql_file('/opt/airflow/dags/SQL_Queries/DimDate.sql')
 DimOdersDetailsQuery=read_sql_file('/opt/airflow/dags/SQL_Queries/DimOrders_details.sql')
 DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimCustomer.sql')                                
 DimProduct = read_sql_file('/opt/airflow/dags/SQL_Queries/DimProduct.sql')
+FactTable = read_sql_file('/opt/airflow/dags/SQL_Queries/Fact_table.sql')
 # DimCreditCardQuery=read_sql_file('/opt/airflow/dags/SQL_Queries/DimCreditCard.sql')
 # DimCustomerQuery=read_sql_file('/opt/airflow/dags/SQL_Queries/DimCustomer.sql')
 # FactSalesQuery=read_sql_file('/opt/airflow/dags/SQL_Queries/FactSales.sql')
@@ -169,14 +170,22 @@ load_dim_product= BigQueryInsertJobOperator(
 
 t5 = load_dim_product
 
+#Task to transform Fact Table
+load_fact_table= BigQueryInsertJobOperator(
 
+    task_id='load_fact_table',
+    location='US',  # Change to your BigQuery dataset location
+    gcp_conn_id='google_cloud_default',
+    configuration = {
+        "query": {
+            "query": FactTable,
+            "useLegacySql": False,
+        }
+    },
+    dag=dag,
+)
 
-
-
-
-
-
-
+t6 = load_fact_table
 
 
 
@@ -185,7 +194,7 @@ t5 = load_dim_product
 
 
 # t0=load_orders_gcs_to_bq #Set task dependencies
-t1 >> [t2,t3,t4,t5]
+t1 >> [t2,t3,t4,t5] >> t6
 
 
 
