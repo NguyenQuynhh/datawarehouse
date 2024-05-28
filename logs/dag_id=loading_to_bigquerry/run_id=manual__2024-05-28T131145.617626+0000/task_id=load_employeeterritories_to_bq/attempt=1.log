@@ -1,0 +1,24 @@
+[2024-05-28T13:12:46.502+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-28T13:12:46.522+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: loading_to_bigquerry.load_employeeterritories_to_bq manual__2024-05-28T13:11:45.617626+00:00 [queued]>
+[2024-05-28T13:12:46.534+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: loading_to_bigquerry.load_employeeterritories_to_bq manual__2024-05-28T13:11:45.617626+00:00 [queued]>
+[2024-05-28T13:12:46.535+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 0
+[2024-05-28T13:12:46.551+0000] {taskinstance.py:2330} INFO - Executing <Task(GCSToBigQueryOperator): load_employeeterritories_to_bq> on 2024-05-28 13:11:45.617626+00:00
+[2024-05-28T13:12:46.558+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2533) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-28T13:12:46.561+0000] {standard_task_runner.py:63} INFO - Started process 2535 to run task
+[2024-05-28T13:12:46.561+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'loading_to_bigquerry', 'load_employeeterritories_to_bq', 'manual__2024-05-28T13:11:45.617626+00:00', '--job-id', '365', '--raw', '--subdir', 'DAGS_FOLDER/load_to_bigquerry.py', '--cfg-path', '/tmp/tmpz50h89bm']
+[2024-05-28T13:12:46.565+0000] {standard_task_runner.py:91} INFO - Job 365: Subtask load_employeeterritories_to_bq
+[2024-05-28T13:12:46.621+0000] {task_command.py:426} INFO - Running <TaskInstance: loading_to_bigquerry.load_employeeterritories_to_bq manual__2024-05-28T13:11:45.617626+00:00 [running]> on host 9b03efc10d80
+[2024-05-28T13:12:46.738+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ngquynh' AIRFLOW_CTX_DAG_ID='loading_to_bigquerry' AIRFLOW_CTX_TASK_ID='load_employeeterritories_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-05-28T13:11:45.617626+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-28T13:11:45.617626+00:00'
+[2024-05-28T13:12:46.740+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-28T13:12:46.774+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-05-28T13:12:46.778+0000] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-05-28T13:12:46.781+0000] {gcs_to_bigquery.py:380} INFO - Using existing BigQuery table for storing data...
+[2024-05-28T13:12:46.845+0000] {gcs_to_bigquery.py:384} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'datawarehouse-423912', 'datasetId': 'warehouse', 'tableId': 'employeeterritories'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://warehouse8/dataupdated/employeeterritories.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': True, 'schema': {'fields': [{'name': 'employeeID', 'type': 'INTEGER', 'mode': 'NULLABLE'}, {'name': 'territoryID', 'type': 'INTEGER', 'mode': 'NULLABLE'}]}, 'maxBadRecords': 10, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-05-28T13:12:46.848+0000] {bigquery.py:1660} INFO - Inserting job ***_loading_to_bigquerry_load_employeeterritories_to_bq_2024_05_28T13_11_45_617626_00_00_37ec91e0e7d9de855ef8787d4b2b115f
+[2024-05-28T13:12:52.648+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-28T13:12:52.659+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=loading_to_bigquerry, task_id=load_employeeterritories_to_bq, run_id=manual__2024-05-28T13:11:45.617626+00:00, execution_date=20240528T131145, start_date=20240528T131246, end_date=20240528T131252
+[2024-05-28T13:12:52.763+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-05-28T13:12:52.802+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-05-28T13:12:52.804+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

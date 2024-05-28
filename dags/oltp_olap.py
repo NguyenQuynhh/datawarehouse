@@ -31,40 +31,40 @@
 #     start_date=datetime(2024, 5, 28),
 # )
 
-# # Loading from Gg cloud storage to Bigquery
-# # orders
-# load_orders_gcs_to_bq = GCSToBigQueryOperator(
-#     task_id='load_orders_to_bq',
-#     bucket='warehouse8',
-#     source_objects=['dataupdated/orders.csv'],  # Can be a list of files or a wildcard pattern
-#     destination_project_dataset_table='datawarehouse-423912:warehouse.orders',
-#     source_format='CSV',  # Adjust based on your file format (CSV, NEWLINE_DELIMITED_JSON, PARQUET, etc.)
-#     write_disposition='WRITE_TRUNCATE',  # Options: WRITE_TRUNCATE, WRITE_APPEND, WRITE_EMPTY
-#     skip_leading_rows=1,  # Skip header row if CSV
-#     schema_fields=[
-#         {'name': 'order_id', 'type': 'INTEGER', 'mode': 'NULLABLE'},
-#         {'name': 'customer_id', 'type': 'STRING', 'mode': 'NULLABLE'},
-#         {'name': 'employee_id', 'type': 'STRING', 'mode': 'NULLABLE'},
-#         {'name': 'order_date', 'type': 'DATE', 'mode': 'NULLABLE'},
-#         {'name': 'required_date', 'type': 'DATE', 'mode': 'NULLABLE'},
-#         {'name': 'shipped_date', 'type': 'DATE', 'mode': 'NULLABLE'},
-#         {'name': 'ship_via', 'type': 'INTEGER', 'mode': 'NULLABLE'},
-#         {'name': 'freight', 'type': 'STRING', 'mode': 'NULLABLE'},
-#         {'name': 'ship_name', 'type': 'STRING', 'mode': 'NULLABLE'},
-#         {'name': 'ship_address', 'type': 'STRING', 'mode': 'NULLABLE'},
-#         {'name': 'ship_region', 'type': 'STRING', 'mode': 'NULLABLE'},
-#         {'name': 'ship_postal_code', 'type': 'STRING', 'mode': 'NULLABLE'},
-#         {'name': 'ship_country', 'type': 'STRING', 'mode': 'NULLABLE'},
-#         # Add schema fields as per your data structure
-#     ],
-#     gcp_conn_id='google_cloud_default',  # Change to your GCP connection ID
-#     max_bad_records=10,  # Allow up to 10 bad records before failing
-#     field_delimiter=',',  # Specify the field delimiter
-#     ignore_unknown_values=True, 
-#     dag=dag  
-# )
+# # # Loading from Gg cloud storage to Bigquery
+# # # orders
+# # load_orders_gcs_to_bq = GCSToBigQueryOperator(
+# #     task_id='load_orders_to_bq',
+# #     bucket='warehouse8',
+# #     source_objects=['dataupdated/orders.csv'],  # Can be a list of files or a wildcard pattern
+# #     destination_project_dataset_table='datawarehouse-423912:warehouse.orders',
+# #     source_format='CSV',  # Adjust based on your file format (CSV, NEWLINE_DELIMITED_JSON, PARQUET, etc.)
+# #     write_disposition='WRITE_TRUNCATE',  # Options: WRITE_TRUNCATE, WRITE_APPEND, WRITE_EMPTY
+# #     skip_leading_rows=1,  # Skip header row if CSV
+# #     schema_fields=[
+# #         {'name': 'order_id', 'type': 'INTEGER', 'mode': 'NULLABLE'},
+# #         {'name': 'customer_id', 'type': 'STRING', 'mode': 'NULLABLE'},
+# #         {'name': 'employee_id', 'type': 'STRING', 'mode': 'NULLABLE'},
+# #         {'name': 'order_date', 'type': 'DATE', 'mode': 'NULLABLE'},
+# #         {'name': 'required_date', 'type': 'DATE', 'mode': 'NULLABLE'},
+# #         {'name': 'shipped_date', 'type': 'DATE', 'mode': 'NULLABLE'},
+# #         {'name': 'ship_via', 'type': 'INTEGER', 'mode': 'NULLABLE'},
+# #         {'name': 'freight', 'type': 'STRING', 'mode': 'NULLABLE'},
+# #         {'name': 'ship_name', 'type': 'STRING', 'mode': 'NULLABLE'},
+# #         {'name': 'ship_address', 'type': 'STRING', 'mode': 'NULLABLE'},
+# #         {'name': 'ship_region', 'type': 'STRING', 'mode': 'NULLABLE'},
+# #         {'name': 'ship_postal_code', 'type': 'STRING', 'mode': 'NULLABLE'},
+# #         {'name': 'ship_country', 'type': 'STRING', 'mode': 'NULLABLE'},
+# #         # Add schema fields as per your data structure
+# #     ],
+# #     gcp_conn_id='google_cloud_default',  # Change to your GCP connection ID
+# #     max_bad_records=10,  # Allow up to 10 bad records before failing
+# #     field_delimiter=',',  # Specify the field delimiter
+# #     ignore_unknown_values=True, 
+# #     dag=dag  
+# # )
 
-# load_orders_gcs_to_bq
+# # load_orders_gcs_to_bq
 
 # def read_sql_file(file_path):
 #     with open(file_path, 'r') as file:

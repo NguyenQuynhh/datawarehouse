@@ -2,6 +2,7 @@ from datetime import timedelta, datetime
 from airflow import DAG
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
+from airflow.operators.bash_operator import BashOperator
 
 # from clustering import train_model 
 
@@ -27,7 +28,7 @@ dag = DAG(
     description='Transform OLTP to OLAP schema in BigQuery',
     # template_searchpath='/opt/airflow/dags/SQL_Queries', ### không hiểu
     schedule_interval=None,
-    start_date=datetime(2024, 5, 27),
+    start_date=datetime(2024, 5, 28),
 )
 
 # Task to load data category from GCS to BigQuery 
@@ -300,20 +301,229 @@ load_shippers_gcs_to_bq = GCSToBigQueryOperator(
 t9= load_shippers_gcs_to_bq
 
 
+# Loading data suppliers from Gg cloud storage to Bigquery
+load_suppliers_gcs_to_bq = GCSToBigQueryOperator(
+    task_id='load_suppliers_to_bq',
+    bucket='warehouse8',
+    source_objects=['dataupdated/suppliers.csv'],  # Can be a list of files or a wildcard pattern
+    destination_project_dataset_table='datawarehouse-423912:warehouse.suppliers',
+    source_format='CSV',  # Adjust based on your file format (CSV, NEWLINE_DELIMITED_JSON, PARQUET, etc.)
+    write_disposition='WRITE_TRUNCATE',  # Options: WRITE_TRUNCATE, WRITE_APPEND, WRITE_EMPTY
+    skip_leading_rows=1,  # Skip header row if CSV
+    schema_fields=[
+        {'name': 'supplierID', 'type': 'INTEGER', 'mode': 'NULLABLE'},
+        {'name': 'companyName', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'contactName', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'contactTitle', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'address', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'city', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'region', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'postalCode', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'country', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'phone', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'fax', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'homePage', 'type': 'STRING', 'mode': 'NULLABLE'},
+    
+          # Add schema fields as per your data structure
+    ],
+    gcp_conn_id='google_cloud_default',  # Change to your GCP connection ID
+    max_bad_records=10,  # Allow up to 10 bad records before failing
+    field_delimiter=',',  # Specify the field delimiter
+    ignore_unknown_values=True, 
+    dag=dag  
+)
+t10= load_suppliers_gcs_to_bq
+
+
+# Loading data territories from Gg cloud storage to Bigquery
+load_territories_gcs_to_bq = GCSToBigQueryOperator(
+    task_id='load_territories_to_bq',
+    bucket='warehouse8',
+    source_objects=['dataupdated/territories.csv'],  # Can be a list of files or a wildcard pattern
+    destination_project_dataset_table='datawarehouse-423912:warehouse.territories',
+    source_format='CSV',  # Adjust based on your file format (CSV, NEWLINE_DELIMITED_JSON, PARQUET, etc.)
+    write_disposition='WRITE_TRUNCATE',  # Options: WRITE_TRUNCATE, WRITE_APPEND, WRITE_EMPTY
+    skip_leading_rows=1,  # Skip header row if CSV
+    schema_fields=[
+        {'name': 'territoryID', 'type': 'INTEGER', 'mode': 'NULLABLE'},
+        {'name': 'territoryDescription', 'type': 'STRING', 'mode': 'NULLABLE'},
+        {'name': 'regionID', 'type': 'INTEGER', 'mode': 'NULLABLE'},
+    
+          # Add schema fields as per your data structure
+    ],
+    gcp_conn_id='google_cloud_default',  # Change to your GCP connection ID
+    max_bad_records=10,  # Allow up to 10 bad records before failing
+    field_delimiter=',',  # Specify the field delimiter
+    ignore_unknown_values=True, 
+    dag=dag  
+)
+t11= load_territories_gcs_to_bq
+
+
+def read_sql_file(file_path):
+    with open(file_path, 'r') as file:
+        sql_content = file.read()
+        print(sql_content) # For debugging purposes
+        return sql_content
+
+UpdateCustomer=read_sql_file('/opt/airflow/dags/SQL_Queries/Update_Customer.sql')  
+DimDateQuery = read_sql_file('/opt/airflow/dags/SQL_Queries/DimDate.sql')
+DimOdersDetailsQuery=read_sql_file('/opt/airflow/dags/SQL_Queries/DimOrders_details.sql')
+DimCustomer = read_sql_file('/opt/airflow/dags/SQL_Queries/DimCustomer.sql')                                
+DimProduct = read_sql_file('/opt/airflow/dags/SQL_Queries/DimProduct.sql')
+FactTable = read_sql_file('/opt/airflow/dags/SQL_Queries/Fact_table.sql')
+RFMTable = read_sql_file('/opt/airflow/dags/SQL_Queries/RFM_table.sql')
+SaleTable = read_sql_file('/opt/airflow/dags/SQL_Queries/Sale_table.sql')
+OrderFactTable = read_sql_file('/opt/airflow/dags/SQL_Queries/Order_Fact_Table.sql')
+
+# Update Customer in Bigquerry
+
+# Task to extract and transform DimCustomer
+transform_dim_customer= BigQueryInsertJobOperator(
+
+    task_id='transform_dim_customer',
+    location='US',  # Change to your BigQuery dataset location
+    gcp_conn_id='google_cloud_default',
+    configuration = {
+        "query": {
+            "query": DimCustomer,
+            "useLegacySql": False,
+        }
+    },
+    dag=dag,
+)
+t12=transform_dim_customer
+
+
+#Task to extract and transform DimDate
+transform_dim_date= BigQueryInsertJobOperator(
+
+    task_id='transform_dim_date',
+    location='US',  # Change to your BigQuery dataset location
+    gcp_conn_id='google_cloud_default',
+    configuration = {
+        "query": {
+            "query": DimDateQuery,
+            "useLegacySql": False,
+        }
+    },
+    dag=dag,
+)
+
+t13= transform_dim_date
+
+
+#Task to extract and transform DimOrdersDetails
+transform_dim_orders_details= BigQueryInsertJobOperator(
+
+    task_id='transform_dim_orders_details',
+    location='US',  # Change to your BigQuery dataset location
+    gcp_conn_id='google_cloud_default',
+    configuration = {
+        "query": {
+            "query": DimOdersDetailsQuery,
+            "useLegacySql": False,
+        }
+    },
+    dag=dag,
+)
+
+t14= transform_dim_orders_details
+
+#Task to extract and transform DimProduct
+transform_dim_product= BigQueryInsertJobOperator(
+
+    task_id='transform_dim_product',
+    location='US',  # Change to your BigQuery dataset location
+    gcp_conn_id='google_cloud_default',
+    configuration = {
+        "query": {
+            "query": DimProduct,
+            "useLegacySql": False,
+        }
+    },
+    dag=dag,
+)
+
+t15 = transform_dim_product
+
+#Task to transform Fact Table
+transform_fact_table= BigQueryInsertJobOperator(
+
+    task_id='transform_fact_table',
+    location='US',  # Change to your BigQuery dataset location
+    gcp_conn_id='google_cloud_default',
+    configuration = {
+        "query": {
+            "query": FactTable,
+            "useLegacySql": False,
+        }
+    },
+    dag=dag,
+)
+
+t16 = transform_fact_table
+
+#Create RFM
+create_FRM_table= BigQueryInsertJobOperator(
+
+    task_id='create_FRM_table',
+    location='US',  # Change to your BigQuery dataset location
+    gcp_conn_id='google_cloud_default',
+    configuration = {
+        "query": {
+            "query":RFMTable ,
+            "useLegacySql": False,
+        }
+    },
+    dag=dag,
+)
+
+t17 = create_FRM_table
+
+
+#Create Sale Table 
+create_Sale_Table= BigQueryInsertJobOperator(
+
+    task_id='create_Sale_Table',
+    location='US',  # Change to your BigQuery dataset location
+    gcp_conn_id='google_cloud_default',
+    configuration = {
+        "query": {
+            "query":SaleTable ,
+            "useLegacySql": False,
+        }
+    },
+    dag=dag,
+)
+
+t18 = create_Sale_Table
+
+#Transform Order Fact Table
+transform_Order_Fact_Table= BigQueryInsertJobOperator(
+
+    task_id='transform_Order_Fact_Table',
+    location='US',  # Change to your BigQuery dataset location
+    gcp_conn_id='google_cloud_default',
+    configuration = {
+        "query": {
+            "query":OrderFactTable ,
+            "useLegacySql": False,
+        }
+    },
+    dag=dag,
+)
+
+t19 = transform_Order_Fact_Table
 
 
 
+TaskDelay=BashOperator(
+    task_id="delay_bash_task", 
+    dag=dag,
+    bash_command="sleep 5s")
 
+# # t0=load_orders_gcs_to_bq #Set task dependencies
+t1 >> t2 >> t3 >> t4 >> t5 >> t6 >> t7 >> t8 >> t9 >> t10 >> t11 >> TaskDelay >> [t12,t13,t14,t15] >> t16 >> t17 >> t18 >> t19
 
-
-
-
-
-
-
-
-
-
-
-t1 >> t2 >> t3 >> t4 >> t5>> t6 >> t7 >> t8 >> t9 
  

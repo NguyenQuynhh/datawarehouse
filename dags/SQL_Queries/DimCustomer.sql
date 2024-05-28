@@ -8,4 +8,4 @@ city,
 phone,
 country
 from
-`datawarehouse-423912.warehouse.newupdated_customers`
+`datawarehouse-423912.warehouse.customers`
