@@ -1,0 +1,1 @@
+[2024-05-28T09:26:20.871+0000] {task_context_logger.py:104} ERROR - Executor reports task instance <TaskInstance: oltp_to_olap_all_transform.transform_dim_product manual__2024-05-28T09:25:13.941842+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

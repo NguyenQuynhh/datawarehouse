@@ -1,7 +1,7 @@
 DECLARE today_date DATE DEFAULT DATE '1998-05-06';
 
 -- Tạo bảng RFM_table
-CREATE OR REPLACE TABLE `marine-catalyst-419003.transformed.RFM_table` AS
+CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.RFM_table` AS
 WITH RFM_table AS (
   SELECT
     orders.customer_id,
@@ -9,9 +9,9 @@ WITH RFM_table AS (
     COUNT(DISTINCT orders.order_id) AS TotalTransaction,
     SUM(order_details.quantity * order_details.unitPrice * (1 - order_details.discount)) AS Monetary
   FROM
-    `marine-catalyst-419003.demo.orders` AS orders
+    `datawarehouse-423912.warehouse.orders` AS orders
   JOIN
-    `marine-catalyst-419003.transformed.Dim_Order_details` AS order_details
+    `datawarehouse-423912.OLAP_dataset.Dim_Order_details` AS order_details
   ON
     orders.order_id = order_details.orderID
   GROUP BY
@@ -32,5 +32,5 @@ FROM
 WHERE
   Monetary > 0;
 
-select * from `marine-catalyst-419003.transformed.RFM_table`
+select * from `datawarehouse-423912.OLAP_dataset.RFM_table`
 where customer_id = 'ANTON'

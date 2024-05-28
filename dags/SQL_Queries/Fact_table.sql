@@ -1,6 +1,6 @@
 DECLARE today_date DATE DEFAULT DATE '1998-05-06';
 
-create or replace table `datawarehouse-423912.OLAP_dataset.Fact_table_temp`
+create or replace table `datawarehouse-423912.OLAP_dataset.Fact_table`
 as 
 select
 orders.order_id,

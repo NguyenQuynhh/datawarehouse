@@ -1,0 +1,23 @@
+[2024-05-28T09:27:01.434+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-28T09:27:01.469+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: oltp_to_olap_all_transform.transform_fact_table manual__2024-05-28T09:25:48.355557+00:00 [queued]>
+[2024-05-28T09:27:01.486+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: oltp_to_olap_all_transform.transform_fact_table manual__2024-05-28T09:25:48.355557+00:00 [queued]>
+[2024-05-28T09:27:01.487+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 0
+[2024-05-28T09:27:01.507+0000] {taskinstance.py:2330} INFO - Executing <Task(BigQueryInsertJobOperator): transform_fact_table> on 2024-05-28 09:25:48.355557+00:00
+[2024-05-28T09:27:01.519+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1102) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-28T09:27:01.522+0000] {standard_task_runner.py:63} INFO - Started process 1104 to run task
+[2024-05-28T09:27:01.521+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'oltp_to_olap_all_transform', 'transform_fact_table', 'manual__2024-05-28T09:25:48.355557+00:00', '--job-id', '260', '--raw', '--subdir', 'DAGS_FOLDER/oltp_olap.py', '--cfg-path', '/tmp/tmpnhrn3mcr']
+[2024-05-28T09:27:01.526+0000] {standard_task_runner.py:91} INFO - Job 260: Subtask transform_fact_table
+[2024-05-28T09:27:01.607+0000] {task_command.py:426} INFO - Running <TaskInstance: oltp_to_olap_all_transform.transform_fact_table manual__2024-05-28T09:25:48.355557+00:00 [running]> on host 9b03efc10d80
+[2024-05-28T09:27:01.753+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ngquynh' AIRFLOW_CTX_DAG_ID='oltp_to_olap_all_transform' AIRFLOW_CTX_TASK_ID='transform_fact_table' AIRFLOW_CTX_EXECUTION_DATE='2024-05-28T09:25:48.355557+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-28T09:25:48.355557+00:00'
+[2024-05-28T09:27:01.756+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-28T09:27:01.786+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-05-28T09:27:01.790+0000] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-05-28T09:27:01.858+0000] {bigquery.py:2832} INFO - Executing: {'query': {'query': "DECLARE today_date DATE DEFAULT DATE '1998-05-06';\n\ncreate or replace table `datawarehouse-423912.OLAP_dataset.Fact_table_temp`\nas \nselect\norders.order_id,\norders.customer_id,\norders.order_date\nfrom\n`datawarehouse-423912.warehouse.orders` as orders\njoin\n`datawarehouse-423912.OLAP_dataset.Dim_Order_details` as order_details\non\norders. order_id = order_details.orderID", 'useLegacySql': False}}'
+[2024-05-28T09:27:01.860+0000] {bigquery.py:1660} INFO - Inserting job ***_oltp_to_olap_all_transform_transform_fact_table_2024_05_28T09_25_48_355557_00_00_3784259bae384fd51f4a241102c5898a
+[2024-05-28T09:27:17.606+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-28T09:27:17.633+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=oltp_to_olap_all_transform, task_id=transform_fact_table, run_id=manual__2024-05-28T09:25:48.355557+00:00, execution_date=20240528T092548, start_date=20240528T092701, end_date=20240528T092717
+[2024-05-28T09:27:17.669+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-05-28T09:27:17.705+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-05-28T09:27:17.707+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
