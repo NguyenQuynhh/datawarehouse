@@ -21,3 +21,7 @@ with RFM_table as (
 )
 
 select * from RFM_table;
+
+
+
+

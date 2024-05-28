@@ -13,7 +13,7 @@ default_args = {
     'depends_on-past': False,
     'email on failure': False,
     'email_on_retry': False,
-    'retries': None,
+    'retries': 4,
     'retry_delay': timedelta(minutes=2),}
 
 #DAG definition
