@@ -8947,3 +8947,291 @@ select * from RFM_table;
 [2024-05-28T13:28:49.413+0000] {logging_mixin.py:188} INFO - [2024-05-28T13:28:49.412+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2024-05-28T13:28:49.445+0000] {logging_mixin.py:188} INFO - [2024-05-28T13:28:49.445+0000] {dag.py:3954} INFO - Setting next_dagrun for loading_to_bigquerry to None, run_after=None
 [2024-05-28T13:28:49.492+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/load_to_bigquerry.py took 0.311 seconds
+[2024-05-28T13:29:19.784+0000] {processor.py:161} INFO - Started process (PID=3266) to work on /opt/airflow/dags/load_to_bigquerry.py
+[2024-05-28T13:29:19.792+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/load_to_bigquerry.py for tasks to queue
+[2024-05-28T13:29:19.797+0000] {logging_mixin.py:188} INFO - [2024-05-28T13:29:19.796+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/load_to_bigquerry.py
+[2024-05-28T13:29:19.861+0000] {logging_mixin.py:188} INFO - -- quá trình upload dataset lên bogquerry, header của mỗi cột bị sai thành field 0_1_2... nên cần query để đổi lại tên cho mỗi header
+create or replace table `datawarehouse-423912.warehouse.newupdated_customers`
+as 
+select string_field_0 as customerID,
+string_field_1 as companyName,
+string_field_2 as contactName,
+string_field_3 as contactTitle,
+string_field_4 as address,
+string_field_5 as city,
+string_field_6 as region,
+string_field_7 as postalCode,
+string_field_8 as country,
+string_field_9 as phone,
+string_field_10 as fax
+from `datawarehouse-423912.warehouse.customers`
+[2024-05-28T13:29:19.868+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.Dim_date` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T13:29:19.873+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T13:29:19.879+0000] {logging_mixin.py:188} INFO - -- dây là tạo từ oltp sang olap
+create or replace table `datawarehouse-423912.OLAP_dataset.Dim_customer` as
+select 
+customerID,
+contactName,
+address,
+city,
+phone,
+country
+from
+`datawarehouse-423912.warehouse.customers`
+[2024-05-28T13:29:19.906+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Products` as
+select 
+products.productID,
+products.productname,
+products.unitPrice,
+categories.categoryID,
+categories.categoryName,
+from
+`datawarehouse-423912.warehouse.products` as products
+inner join`datawarehouse-423912.warehouse.categories` as categories
+on categories.categoryID = products.categoryID
+[2024-05-28T13:29:19.917+0000] {logging_mixin.py:188} INFO - DECLARE today_date DATE DEFAULT DATE '1998-05-06';
+
+create or replace table `datawarehouse-423912.OLAP_dataset.Fact_table`
+as 
+select
+orders.order_id,
+orders.customer_id,
+orders.order_date
+from
+`datawarehouse-423912.warehouse.orders` as orders
+join
+`datawarehouse-423912.OLAP_dataset.Dim_Order_details` as order_details
+on
+orders. order_id = order_details.orderID
+[2024-05-28T13:29:19.926+0000] {logging_mixin.py:188} INFO - DECLARE today_date DATE DEFAULT DATE '1998-05-06';
+
+-- Tạo bảng RFM_table
+CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.RFM_table` AS
+WITH RFM_table AS (
+  SELECT
+    orders.customer_id,
+    MAX(CAST(orders.order_date AS DATE)) AS LastPurchaseDate,
+    COUNT(DISTINCT orders.order_id) AS TotalTransaction,
+    SUM(order_details.quantity * order_details.unitPrice * (1 - order_details.discount)) AS Monetary
+  FROM
+    `datawarehouse-423912.warehouse.orders` AS orders
+  JOIN
+    `datawarehouse-423912.OLAP_dataset.Dim_Order_details` AS order_details
+  ON
+    orders.order_id = order_details.orderID
+  GROUP BY
+    orders.customer_id
+)
+
+-- Thêm các cột điểm vào bảng mới
+SELECT
+  customer_id,
+  DATE_DIFF(today_date, LastPurchaseDate, DAY) AS Recency,
+  TotalTransaction AS Frequency,
+  Monetary,
+  NULL AS recency_score, -- Khởi tạo cột recency_score với giá trị NULL
+  NULL AS frequency_score, -- Khởi tạo cột frequency_score với giá trị NULL
+  NULL AS monetary_score -- Khởi tạo cột monetary_score với giá trị NULL
+FROM
+  RFM_table
+WHERE
+  Monetary > 0;
+
+select * from `datawarehouse-423912.OLAP_dataset.RFM_table`
+where customer_id = 'ANTON'
+[2024-05-28T13:29:19.932+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Sale_table` AS
+SELECT 
+    orderID,
+    SUM(quantity * unitprice * (1 - discount)) AS total_revenue
+FROM 
+    `datawarehouse-423912.OLAP_dataset.Dim_Order_details`
+GROUP BY 
+    orderID;
+[2024-05-28T13:29:19.938+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Order_fact_table` as
+with RFM_table as (
+  select
+  fact.customer_id,
+  fact.order_id,
+  fact.order_date,
+  rfm.Recency,
+  rfm.Frequency,
+  rfm.Monetary,
+  sale.total_revenue
+  from
+  `datawarehouse-423912.OLAP_dataset.Fact_table` as fact
+  join
+  `datawarehouse-423912.OLAP_dataset.RFM_table` as rfm
+  on 
+ fact.customer_id = rfm.customer_id
+  JOIN
+  `datawarehouse-423912.OLAP_dataset.Sale_table` as sale
+  ON
+  fact.order_id = sale.orderID
+)
+
+select * from RFM_table;
+[2024-05-28T13:29:19.975+0000] {processor.py:840} INFO - DAG(s) 'loading_to_bigquerry' retrieved from /opt/airflow/dags/load_to_bigquerry.py
+[2024-05-28T13:29:20.067+0000] {logging_mixin.py:188} INFO - [2024-05-28T13:29:20.066+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T13:29:20.132+0000] {logging_mixin.py:188} INFO - [2024-05-28T13:29:20.126+0000] {dag.py:3954} INFO - Setting next_dagrun for loading_to_bigquerry to None, run_after=None
+[2024-05-28T13:29:20.204+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/load_to_bigquerry.py took 0.441 seconds
+[2024-05-28T13:29:51.553+0000] {processor.py:161} INFO - Started process (PID=3274) to work on /opt/airflow/dags/load_to_bigquerry.py
+[2024-05-28T13:29:51.567+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/load_to_bigquerry.py for tasks to queue
+[2024-05-28T13:29:51.575+0000] {logging_mixin.py:188} INFO - [2024-05-28T13:29:51.571+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/load_to_bigquerry.py
+[2024-05-28T13:29:51.751+0000] {logging_mixin.py:188} INFO - -- quá trình upload dataset lên bogquerry, header của mỗi cột bị sai thành field 0_1_2... nên cần query để đổi lại tên cho mỗi header
+create or replace table `datawarehouse-423912.warehouse.newupdated_customers`
+as 
+select string_field_0 as customerID,
+string_field_1 as companyName,
+string_field_2 as contactName,
+string_field_3 as contactTitle,
+string_field_4 as address,
+string_field_5 as city,
+string_field_6 as region,
+string_field_7 as postalCode,
+string_field_8 as country,
+string_field_9 as phone,
+string_field_10 as fax
+from `datawarehouse-423912.warehouse.customers`
+[2024-05-28T13:29:51.759+0000] {logging_mixin.py:188} INFO - CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.Dim_date` AS
+SELECT
+  SAFE_CAST(order_date AS DATE) AS order_date,
+  EXTRACT(MONTH FROM SAFE_CAST(order_date AS DATE)) AS month,
+  EXTRACT(QUARTER FROM SAFE_CAST(order_date AS DATE)) AS quarter,
+  EXTRACT(YEAR FROM SAFE_CAST(order_date AS DATE)) AS year,
+  CASE
+    WHEN EXTRACT(DAYOFWEEK FROM SAFE_CAST(order_date AS DATE)) IN (1, 7) THEN TRUE
+    ELSE FALSE
+  END AS weekend_flag
+FROM
+  `datawarehouse-423912.warehouse.orders`
+WHERE
+  SAFE_CAST(order_date AS DATE) IS NOT NULL;
+[2024-05-28T13:29:51.770+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Order_details` as
+select 
+*
+from
+`datawarehouse-423912.warehouse.orderdetails`
+[2024-05-28T13:29:51.785+0000] {logging_mixin.py:188} INFO - -- dây là tạo từ oltp sang olap
+create or replace table `datawarehouse-423912.OLAP_dataset.Dim_customer` as
+select 
+customerID,
+contactName,
+address,
+city,
+phone,
+country
+from
+`datawarehouse-423912.warehouse.customers`
+[2024-05-28T13:29:51.806+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Dim_Products` as
+select 
+products.productID,
+products.productname,
+products.unitPrice,
+categories.categoryID,
+categories.categoryName,
+from
+`datawarehouse-423912.warehouse.products` as products
+inner join`datawarehouse-423912.warehouse.categories` as categories
+on categories.categoryID = products.categoryID
+[2024-05-28T13:29:51.825+0000] {logging_mixin.py:188} INFO - DECLARE today_date DATE DEFAULT DATE '1998-05-06';
+
+create or replace table `datawarehouse-423912.OLAP_dataset.Fact_table`
+as 
+select
+orders.order_id,
+orders.customer_id,
+orders.order_date
+from
+`datawarehouse-423912.warehouse.orders` as orders
+join
+`datawarehouse-423912.OLAP_dataset.Dim_Order_details` as order_details
+on
+orders. order_id = order_details.orderID
+[2024-05-28T13:29:51.835+0000] {logging_mixin.py:188} INFO - DECLARE today_date DATE DEFAULT DATE '1998-05-06';
+
+-- Tạo bảng RFM_table
+CREATE OR REPLACE TABLE `datawarehouse-423912.OLAP_dataset.RFM_table` AS
+WITH RFM_table AS (
+  SELECT
+    orders.customer_id,
+    MAX(CAST(orders.order_date AS DATE)) AS LastPurchaseDate,
+    COUNT(DISTINCT orders.order_id) AS TotalTransaction,
+    SUM(order_details.quantity * order_details.unitPrice * (1 - order_details.discount)) AS Monetary
+  FROM
+    `datawarehouse-423912.warehouse.orders` AS orders
+  JOIN
+    `datawarehouse-423912.OLAP_dataset.Dim_Order_details` AS order_details
+  ON
+    orders.order_id = order_details.orderID
+  GROUP BY
+    orders.customer_id
+)
+
+-- Thêm các cột điểm vào bảng mới
+SELECT
+  customer_id,
+  DATE_DIFF(today_date, LastPurchaseDate, DAY) AS Recency,
+  TotalTransaction AS Frequency,
+  Monetary,
+  NULL AS recency_score, -- Khởi tạo cột recency_score với giá trị NULL
+  NULL AS frequency_score, -- Khởi tạo cột frequency_score với giá trị NULL
+  NULL AS monetary_score -- Khởi tạo cột monetary_score với giá trị NULL
+FROM
+  RFM_table
+WHERE
+  Monetary > 0;
+
+select * from `datawarehouse-423912.OLAP_dataset.RFM_table`
+where customer_id = 'ANTON'
+[2024-05-28T13:29:51.844+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Sale_table` AS
+SELECT 
+    orderID,
+    SUM(quantity * unitprice * (1 - discount)) AS total_revenue
+FROM 
+    `datawarehouse-423912.OLAP_dataset.Dim_Order_details`
+GROUP BY 
+    orderID;
+[2024-05-28T13:29:51.853+0000] {logging_mixin.py:188} INFO - create or replace table `datawarehouse-423912.OLAP_dataset.Order_fact_table` as
+with RFM_table as (
+  select
+  fact.customer_id,
+  fact.order_id,
+  fact.order_date,
+  rfm.Recency,
+  rfm.Frequency,
+  rfm.Monetary,
+  sale.total_revenue
+  from
+  `datawarehouse-423912.OLAP_dataset.Fact_table` as fact
+  join
+  `datawarehouse-423912.OLAP_dataset.RFM_table` as rfm
+  on 
+ fact.customer_id = rfm.customer_id
+  JOIN
+  `datawarehouse-423912.OLAP_dataset.Sale_table` as sale
+  ON
+  fact.order_id = sale.orderID
+)
+
+select * from RFM_table;
+[2024-05-28T13:29:52.097+0000] {processor.py:840} INFO - DAG(s) 'loading_to_bigquerry' retrieved from /opt/airflow/dags/load_to_bigquerry.py
+[2024-05-28T13:29:52.613+0000] {logging_mixin.py:188} INFO - [2024-05-28T13:29:52.612+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-05-28T13:29:53.054+0000] {logging_mixin.py:188} INFO - [2024-05-28T13:29:53.053+0000] {dag.py:3954} INFO - Setting next_dagrun for loading_to_bigquerry to None, run_after=None
+[2024-05-28T13:29:53.217+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/load_to_bigquerry.py took 1.720 seconds

@@ -9,3 +9,5 @@ from
 `datawarehouse-423912.warehouse.products` as products
 inner join`datawarehouse-423912.warehouse.categories` as categories
 on categories.categoryID = products.categoryID
+
+
